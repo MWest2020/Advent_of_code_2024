@@ -1,16 +1,18 @@
-list1 = [3, 4, 2, 1, 3, 3]
-list2 = [4, 3, 5, 3, 9, 3]
+list1 = []
+list2 = []
+
+
+filename = "./rows.txt"
+with open(filename, "r") as file:
+    for line in file:
+        #  first number add to list list 1 and second number add to list list 2
+        list1.append(int(line.split()[0]))
+        list2.append(int(line.split()[1]))
+
 
 sorted_list1 = sorted(list1)
 sorted_list2 = sorted(list2)
 
-total_difference = []
+result = sum(abs(sorted_list2[i] - sorted_list1[i]) for i in range(len(sorted_list1)))
 
-print(sorted_list1)
-print(sorted_list2)
-
-for i in range(len(sorted_list1)):
-    total_difference.append(sorted_list2[i] - sorted_list1[i])
-
-
-print(sum(total_difference))
+print(result)
